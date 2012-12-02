@@ -4,6 +4,12 @@ gem 'rails', '3.2.9'
 gem 'mysql', '2.8.1'
 gem 'capistrano'
 
+gem 'jquery-rails'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
