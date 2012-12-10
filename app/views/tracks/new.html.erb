@@ -1,0 +1,12 @@
+New track
+
+<%= form_for @track, :html => {:multipart => true} do |form| %>
+  <%= render 'shared/error_messages', :target => @track %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+  <br>
+  <%= form.label :file %>
+  <%= form.file_field :file %>
+  <br>
+  <%= form.submit %>
+<% end %>
