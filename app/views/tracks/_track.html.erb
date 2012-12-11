@@ -1,4 +1,5 @@
 <div class='track'>
   title: <%= track.title %><br>
-  file: <%= track.file.url %>
+  file: <%= link_to track.file, track.file.url %><br>
+  size: <%= track.file_size %><br>
 </div>
