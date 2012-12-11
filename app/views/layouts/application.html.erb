@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<% if user_signed_in? %>
+  <div id="navigation">
+    <%= link_to 'New track', new_track_path %>
+  </div>
+<% end %>
+
 <%= yield %>
 
 </body>
