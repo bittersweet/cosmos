@@ -1,5 +1,6 @@
 soundManager.setup
   url: '/soundmanager2.swf'
+  debugMode: false
 
 $ ->
   $('.track a').click (event) ->
