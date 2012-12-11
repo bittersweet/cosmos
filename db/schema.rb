@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20121210195847) do
     t.integer  "user_id"
     t.string   "title"
     t.string   "file"
+    t.integer  "file_size"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

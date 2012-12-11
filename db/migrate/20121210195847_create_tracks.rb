@@ -4,6 +4,7 @@ class CreateTracks < ActiveRecord::Migration
       t.integer :user_id
       t.string :title
       t.string :file
+      t.integer :file_size
       t.timestamps
     end
 
