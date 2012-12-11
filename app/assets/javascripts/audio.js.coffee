@@ -3,7 +3,7 @@ soundManager.setup
   debugMode: false
 
 $ ->
-  $('.track a').click (event) ->
+  $('#tracks').on 'click', 'a', (event) ->
     event.preventDefault()
     console.log $(@)
     window.currentTrack = soundManager.createSound

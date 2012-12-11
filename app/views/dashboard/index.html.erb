@@ -1,1 +1,8 @@
-<%= render @tracks %>
+<div id="tracks">
+  tracks
+</div>
+
+<script>
+  new app.CosmosRouter({tracks: <%= @tracks.to_json.html_safe %>});
+  Backbone.history.start({root: '/dashboard'});
+</script>

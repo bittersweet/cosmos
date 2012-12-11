@@ -11,6 +11,17 @@ class Track < ActiveRecord::Base
 
   scope :ordered, order('id DESC')
 
+  def as_json(options = {})
+    {
+      :id => id,
+      :title => title,
+      :filename => file.file.filename,
+      :file => file.url,
+      :file_size => file_size,
+      :created_at => created_at
+    }
+  end
+
   private
 
   def set_file_size
