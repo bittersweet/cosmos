@@ -16,6 +16,15 @@ class TracksView extends Backbone.View
 
 class TrackView extends Backbone.View
   template: HoganTemplates['templates/track']
+  events: ->
+    'click a': 'playTrack'
+  playTrack: (event) ->
+    event.preventDefault()
+    window.currentTrack = soundManager.createSound
+      id: @model.get('filename')
+      url: @model.get('file')
+    window.currentTrack.play()
+
   render: ->
     $(@el).html @template.render(@model.toJSON())
     @
