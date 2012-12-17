@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
-gem 'mysql', '2.8.1'
+gem 'mysql2'
 gem 'capistrano'
 
 gem 'jquery-rails'
