@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
     user.name = auth['info']['name']
     user.email = auth['info']['email']
     user.save
+    user
   end
 end
