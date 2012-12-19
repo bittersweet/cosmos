@@ -24,6 +24,7 @@ production:
   encoding: utf8
   reconnect: false
   pool: 5
-  database: cosmos_production
-  username: deploy
-  password: deploy
+  database: <%= ENV['DATABASE'] %>
+  username: <%= ENV['USERNAME'] %>
+  password: <%= ENV['PASSWORD'] %>
+
