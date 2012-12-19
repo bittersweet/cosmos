@@ -3,6 +3,7 @@ class CosmosRouter extends Backbone.Router
     new app.AppView collection: app.Tracks
     @tracks = new app.Tracks
     @tracks.reset options.tracks
+    app.tracks = @tracks
 
   routes:
     '': 'root'
