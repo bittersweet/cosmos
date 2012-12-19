@@ -30,5 +30,6 @@ class TrackView extends Backbone.View
     @
 
 @app = window.app ? {}
+@app.player = new Backbone.SoundManager2(autoPlay: true)
 @app.AppView = AppView
 @app.TracksView = TracksView
