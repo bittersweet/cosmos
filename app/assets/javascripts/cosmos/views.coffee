@@ -42,7 +42,6 @@ class TrackView extends Backbone.View
     console.log "LOG"
 
   updatePosition: (sound) =>
-    console.log "update position"
     return unless sound?
 
     width = "#{100 * sound.position / sound.durationEstimate}%"
@@ -53,7 +52,10 @@ class TrackView extends Backbone.View
 
   playTrack: (event) ->
     event.preventDefault()
-    app.player.load @model
+    if app.player.playable == @model
+      app.player.toggle()
+    else
+      app.player.load @model
 
   render: ->
     $(@el).html @template.render(@model.toJSON())
