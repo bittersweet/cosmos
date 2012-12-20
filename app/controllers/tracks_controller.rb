@@ -13,7 +13,8 @@ class TracksController < ApplicationController
   end
 
   def waveform
-    image = ChunkyPNG::Image.from_file("./doc/output2.png")
+    @track = Track.find(params[:id])
+    image = ChunkyPNG::Image.from_file(@track.waveform.path)
     peaks = []
     (0..1799).each do |column|
       pixels = image.column(column).first(140)

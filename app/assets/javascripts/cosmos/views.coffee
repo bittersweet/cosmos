@@ -55,7 +55,7 @@ class TrackView extends Backbone.View
 
   render: ->
     $(@el).html @template.render(@model.toJSON())
-    $.getJSON '/tracks/1/waveform.json', (data) =>
+    $.getJSON "/tracks/#{@model.id}/waveform.json", (data) =>
       @model.waveform = new Waveform
         container: @$('.waveform')[0],
         innerColor: "#333",
