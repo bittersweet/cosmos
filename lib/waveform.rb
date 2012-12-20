@@ -8,23 +8,13 @@ class Waveform
   def analyze
     image = ChunkyPNG::Image.from_file(@track.waveform.path)
     peaks = []
-    (0..1799).each do |column|
-      pixels = image.column(column).first(140)
-
-      pixels.each_with_index do |pixel, index|
-        if pixel > 0
-          peaks << index
-          break
-        end
-      end
+    (0..1799).each do |y|
+      peaks << retrieve_peak_from_column(image.column(y))
     end
 
-    converted_peaks = []
-    peaks.each do |peak|
-      result = 1 - (peak / 140.0)
-      converted_peaks << result
+    peaks.collect do |peak|
+      1 - (peak / 140.0)
     end
-    converted_peaks
   end
 
   def generate_waveform
@@ -34,5 +24,13 @@ class Waveform
     output_file = File.open(filename)
     @track.waveform = output_file
     @track.save
+  end
+
+  private
+
+  def retrieve_peak_from_column(column)
+    column.each_with_index do |pixel, index|
+      return index if pixel > 0
+    end
   end
 end
