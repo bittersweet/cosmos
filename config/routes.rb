@@ -1,7 +1,9 @@
 Cosmos::Application.routes.draw do
   devise_for :users
 
-  resources :tracks
+  resources :tracks do
+    get :waveform, :on => :member
+  end
 
   match '/login', to: 'sessions#new'
   match '/auth/facebook/callback', to: 'sessions#callback'

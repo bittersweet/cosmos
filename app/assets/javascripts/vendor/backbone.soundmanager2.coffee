@@ -176,6 +176,8 @@ class Backbone.SoundManager2
       # changed while fetching url..
       return unless @playable == playable
 
+      streamOptions = playable.waveform.optionsForSyncedStream()
+
       @sound = soundManager.createSound
         autoPlay     : false # Trick: we want the "played" event
                              # to be emitted after the "loaded"
@@ -190,7 +192,8 @@ class Backbone.SoundManager2
         onresume     : => @trigger "resumed",     @sound
         onstop       : => @trigger "stopped",     @sound
         whileplaying : => @trigger "playing",     @sound
-        whileloading : => @trigger "bytesLoaded", @sound
+        # whileloading : => @trigger "bytesLoaded", @sound
+        whileloading : streamOptions.whileloading
 
       @trigger "loaded", @sound
 

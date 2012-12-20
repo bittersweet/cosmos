@@ -25,27 +25,23 @@ class TrackView extends Backbone.View
     @model.on "player:finished", @log
     @model.on "player:releasing", @stopped
     @model.on "player:playing", @updatePosition
+    @model.on "player:bytesLoaded", @log
 
   played: =>
     console.log "playing"
-    $(@el).addClass("playing")
 
   paused: =>
     console.log "paused"
-    $(@el).removeClass("playing")
 
   stopped: =>
     console.log "stopped"
-    $(@el).removeClass("playing")
 
   log: =>
     console.log "LOG"
 
   updatePosition: (sound) =>
+    @model.waveform.redraw()
     return unless sound?
-
-    width = "#{100 * sound.position / sound.durationEstimate}%"
-    @$(".bar .filler").css "width", width
 
   events: ->
     'click a': 'playTrack'
@@ -59,6 +55,11 @@ class TrackView extends Backbone.View
 
   render: ->
     $(@el).html @template.render(@model.toJSON())
+    $.getJSON '/tracks/1/waveform.json', (data) =>
+      @model.waveform = new Waveform
+        container: @$('.waveform')[0],
+        innerColor: "#333",
+        data: data
     @
 
 @app = window.app ? {}
