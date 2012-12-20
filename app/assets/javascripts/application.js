@@ -16,6 +16,7 @@
 //= require vendor/underscore-1.4.3
 //= require vendor/backbone-0.9.2
 //= require vendor/backbone.soundmanager2.js
+//= require vendor/waveform
 //= require hogan.js
 //= require_tree ./templates
 //= require cosmos
