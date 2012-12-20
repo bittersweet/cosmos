@@ -1,0 +1,8 @@
+# On Ubuntu
+$ sudo apt-get install libsox-dev libpng12-dev
+$ gcc -o waveform main.c -O3 -lsox -lz -lpng
+
+# On OSX
+$ brew install sox
+$ brew install libpng
+$ gcc -o waveform main.c -03 -lsox -lz -lpng -I/usr/local/include -L/usr/local/lib -I/usr/local/opt/libpng/include -L/usrl/local/opt/libpng/lib
