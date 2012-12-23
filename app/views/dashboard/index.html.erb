@@ -3,6 +3,10 @@
 </div>
 
 <script>
+  if (window.location.hash == '#_=_') {
+    window.location.hash = '';
+  }
+
   window.currentUser = <%= current_user.to_json(:only => [:id, :email, :created_at]).html_safe %>;
 
   new app.CosmosRouter({tracks: <%= @tracks.to_json.html_safe %>});
