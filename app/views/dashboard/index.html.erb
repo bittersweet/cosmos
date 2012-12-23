@@ -3,6 +3,8 @@
 </div>
 
 <script>
+  window.currentUser = <%= current_user.to_json(:only => [:id, :email, :created_at]).html_safe %>;
+
   new app.CosmosRouter({tracks: <%= @tracks.to_json.html_safe %>});
   Backbone.history.start({root: '/dashboard'});
 </script>
