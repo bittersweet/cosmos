@@ -9,7 +9,7 @@ class Track < ActiveRecord::Base
   validates_presence_of :title, :file
 
   before_save :set_file_size
-  after_create :generate_waveform
+  after_commit :generate_waveform, :on => :create
 
   scope :ordered, order('id DESC')
 
