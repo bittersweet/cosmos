@@ -27,6 +27,10 @@ class TrackView extends Backbone.View
     @model.on "player:playing", @updatePosition
     @model.on "player:bytesLoaded", @log
 
+  events: ->
+    'click a': 'playTrack'
+    'click .waveform': 'scrub'
+
   played: =>
     options = {meta: "#{window.currentUser.id}: #{@model.get('title')}"}
     metric.track("play", options)
@@ -45,8 +49,10 @@ class TrackView extends Backbone.View
     @model.waveform.redraw()
     return unless sound?
 
-  events: ->
-    'click a': 'playTrack'
+  scrub: (event) ->
+    offset = $(@el).offset()
+    position = (event.pageX - offset.left) / 1200 # width of player
+    app.player.setPosition(position)
 
   playTrack: (event) ->
     event.preventDefault()
