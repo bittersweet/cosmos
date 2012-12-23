@@ -176,7 +176,9 @@ class Backbone.SoundManager2
       # changed while fetching url..
       return unless @playable == playable
 
-      streamOptions = playable.waveform.optionsForSyncedStream()
+      streamOptions = playable.waveform.optionsForSyncedStream
+        playedColor: "rgb(220, 15, 7)"
+        loadedColor: "rgb(13, 13, 13)"
 
       @sound = soundManager.createSound
         autoPlay     : false # Trick: we want the "played" event
