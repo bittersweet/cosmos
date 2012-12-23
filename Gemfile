@@ -4,6 +4,7 @@ gem 'rails', '3.2.9'
 gem 'mysql2'
 gem 'capistrano'
 gem 'figaro'
+gem 'metric'
 
 gem 'jquery-rails'
 
