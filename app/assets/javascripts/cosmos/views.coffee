@@ -28,8 +28,9 @@ class TrackView extends Backbone.View
     @model.on "player:bytesLoaded", @log
 
   events: ->
-    'click a': 'playTrack'
+    'click a.file': 'playTrack'
     'click .waveform': 'scrub'
+    'click a.title': 'navigateToTrack'
 
   played: =>
     options = {meta: "#{window.currentUser.id}: #{@model.get('title')}"}
@@ -61,6 +62,11 @@ class TrackView extends Backbone.View
     else
       app.player.load @model
 
+  navigateToTrack: (event) ->
+    event.preventDefault()
+    console.log "navigateToTrack"
+    Backbone.history.navigate "tracks/#{@model.id}", true
+
   render: ->
     $(@el).html @template.render(@model.toJSON())
     $.getJSON "/tracks/#{@model.id}/waveform.json", (data) =>
@@ -74,3 +80,4 @@ class TrackView extends Backbone.View
 @app.player = new Backbone.SoundManager2(autoPlay: true)
 @app.AppView = AppView
 @app.TracksView = TracksView
+@app.TrackView = TrackView
