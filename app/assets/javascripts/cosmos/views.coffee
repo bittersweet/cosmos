@@ -50,8 +50,8 @@ class TrackView extends Backbone.View
     return unless sound?
 
   scrub: (event) ->
-    offset = $(@el).offset()
-    position = (event.pageX - offset.left) / 1200 # width of player
+    left_offset = @$(".waveform").offset().left + 2 # bit of a magic variable, but seems to align better
+    position = (event.pageX - left_offset) / 1200 # width of player
     app.player.setPosition(position)
 
   playTrack: (event) ->
