@@ -28,7 +28,8 @@ class TrackView extends Backbone.View
     @model.on "player:bytesLoaded", @log
 
   played: =>
-    metric.track("play")
+    options = {meta: "#{window.currentUser.id}: #{@model.get('title')}"}
+    metric.track("play", options)
     console.log "playing"
 
   paused: =>
