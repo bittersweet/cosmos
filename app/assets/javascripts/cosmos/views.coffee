@@ -1,6 +1,16 @@
 class AppView extends Backbone.View
+  initialize: ->
+    navigationView = new NavigationView
+    $("div#navigation").append navigationView.render().el
+
+class NavigationView extends Backbone.View
+  template: HoganTemplates['templates/navigation']
+  events:
+   'click .home': 'home'
+  home: ->
+    Backbone.history.navigate "", true
   render: ->
-    $(@el).empty()
+    $(@el).html @template.render()
     @
 
 class TracksView extends Backbone.View
@@ -64,7 +74,6 @@ class TrackView extends Backbone.View
 
   navigateToTrack: (event) ->
     event.preventDefault()
-    console.log "navigateToTrack"
     Backbone.history.navigate "tracks/#{@model.id}", true
 
   render: ->
