@@ -22,8 +22,7 @@ class Waveform
     filename = Rails.root + "tmp/#{@track.id}-waveform.png"
     `/usr/local/bin/waveform --width 1800 --height 280 --color-bg 00000000 --color-center 000000ff --color-outer 000000ff #{file} #{filename}`
     output_file = File.open(filename)
-    @track.waveform = output_file
-    @track.save
+    @track.update_attributes(:waveform => output_file)
   end
 
   private

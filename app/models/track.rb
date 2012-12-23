@@ -4,7 +4,7 @@ class Track < ActiveRecord::Base
 
   belongs_to :user
 
-  attr_accessible :title, :file
+  attr_accessible :title, :file, :waveform
 
   validates_presence_of :title, :file
 
@@ -33,6 +33,7 @@ class Track < ActiveRecord::Base
   end
 
   def generate_waveform
+    return true if waveform.present?
     Waveform.new(self).generate_waveform
   end
 end
