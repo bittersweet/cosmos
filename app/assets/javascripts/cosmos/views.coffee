@@ -43,7 +43,7 @@ class TrackView extends Backbone.View
     'click a.title': 'navigateToTrack'
 
   played: =>
-    options = {meta: "#{window.currentUser.id}: #{@model.get('title')}"}
+    options = {meta: @model.get('title')}
     metric.track("play", options)
     console.log "playing"
 
