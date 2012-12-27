@@ -6,6 +6,7 @@ class TracksController < ApplicationController
   def create
     @track = current_user.tracks.new(params[:track])
     if @track.save
+      Metric.track("track", :customer => metric_current_user)
       redirect_to dashboard_path
     else
       render :new
