@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
   def index
-    @tracks = current_user.tracks.ordered
+    @tracks = Track.ordered
   end
 end
